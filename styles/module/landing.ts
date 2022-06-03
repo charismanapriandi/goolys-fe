@@ -9,7 +9,7 @@ const LandingStyle = styled('div')(({theme}) => ({
     position: 'relative',
   },
   ".landing-section_title": {
-    fontFamily: `${theme.fontFamily.poppins}`,
+    // fontFamily: `${theme.fontFamily.poppins}`,
     fontWeight: 900,
     textTransform: 'uppercase',
     zIndex: '-1',
@@ -22,7 +22,7 @@ const LandingStyle = styled('div')(({theme}) => ({
       fontSize: '200px',
     },
     pointerEvents: 'none',
-    color: `${theme.colors.white.opacity[.2]}`,
+    // color: `${theme.colors.white.opacity[.2]}`,
   }
 }))
 

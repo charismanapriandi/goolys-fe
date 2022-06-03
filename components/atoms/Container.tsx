@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Container = styled.div(({theme}) => ({
+const Container = styled.div(() => ({
+  maxWidth: '1024px',
   margin: '0 auto',
-  maxWidth: '1346px',
-  padding: '0 20px',
-}))
+  padding: '0 10px',
+}));
 
 export default Container;

@@ -3,29 +3,28 @@ import { DefaultTheme } from 'styled-components';
 const theme: DefaultTheme = {
   borderRadius: '5px',
   fontFamily: {
-    arial: 'Arial',
-    poppins: "'Poppins', sans-serif",
+    primary: "'Roboto', sans-serif",
   },
   transition: {
     easeInOut: (duration: number) => `all ${duration}s ease-in-out`,
   }, 
   colors: {
-    black: {
-      opacity: {
-        1: 'rgba(0, 0, 0, 1)',
-      }
+    dark: {
+      background: {
+        1: '#1C1A18',
+        2: '#282524',
+      },
+      font: {
+        1: '#FFFFFF',
+        2: '#D5D3D1',
+        3: '#A7A29F',
+        4: '#56534F',
+      },
+      border: {
+        1: 'rgb(41, 37, 36)',
+        2: '#423F3B'
+      },
     },
-    white: {
-      opacity: {
-        1: 'rgba(255, 255, 255, 1)',
-        .87: 'rgba(255, 255, 255, .87)',
-        .69: 'rgba(255, 255, 255, .69)',
-        .2: 'rgba(255, 255, 255, .2)',
-      }
-    },
-    background: {
-      dark: '#000000',
-    }
   },
 };
 

@@ -6,29 +6,28 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
     fontFamily: {
-      arial: string;
-      poppins: string;
+      primary: string;
     }
     transition: {
       easeInOut: (duration: number) => string,
     }
     colors: {
-      black: {
-        opacity: {
+      dark: {
+        background: {
           1: string;
+          2: string;
+        };
+        font: {
+          1: string;
+          2: string;
+          3: string;
+          4: string;
         }
+        border: {
+          1: string;
+          2: string;
+        };
       }
-      white: {
-        opacity: {
-          1: string,
-          .87: string,
-          .69: string,
-          .2: string,
-        }
-      }
-      background: {
-        dark: string;
-      };
     };
   }
 }

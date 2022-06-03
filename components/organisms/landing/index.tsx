@@ -1,11 +1,9 @@
-import ContactSection from "./ContactSection";
-import HeroSection from "./HeroSection";
-import ProjectSection from "./ProjectSection";
-import SkillSection from "./SkillSection";
+import Hero from "./Hero";
+import Project from "./Project";
+import Skill from "./Skill";
 
 export {
-  ContactSection,
-  HeroSection,
-  ProjectSection,
-  SkillSection,
+  Hero,
+  Project,
+  Skill,
 }

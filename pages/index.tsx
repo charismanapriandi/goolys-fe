@@ -1,20 +1,22 @@
-import Layout from 'components/layout/Layout'
-import type { NextPage } from 'next'
-import LandingStyle from '../styles/module/landing'
-import * as Landing from '@/organisms/landing'
-import Cursor from '@/atoms/Cursor'
+import styled from "styled-components";
+import * as Landing from '@/organisms/landing';
+import Container from "@/atoms/Container";
+import Header from "@/organisms/Header";
 
-const Home: NextPage = () => {
+const Root = styled.div(({theme}) => ({
+
+}))
+
+const Home = () => {
   return (
-    <LandingStyle>
-      <Layout>
-        <Landing.HeroSection />
-        <Landing.ProjectSection />
-        <Landing.SkillSection />
-        <Landing.ContactSection />
-      </Layout>
-      <Cursor />
-    </LandingStyle>
+    <Root>
+      <Container>
+        <Header />
+        <Landing.Hero />
+        <Landing.Project />
+        <Landing.Skill />
+      </Container>
+    </Root>
   )
 }
 
