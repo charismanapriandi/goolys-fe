@@ -1,6 +1,7 @@
 import Container from "@/atoms/Container";
 import { contact } from "common/contact";
 import { socialMedia } from "common/socialMedia";
+import usePosition from "hook/usePosition";
 import Link from "next/link";
 import styled from "styled-components"
 import { breakpoint } from "styles/breakpoints";
@@ -91,26 +92,29 @@ const Root = styled.div(({theme}) => ({
 }))
 
 const ContactSection = () => {
+  const posY = usePosition()
   return (
     <Root>
       <Container>
-        <h2 className='landing-section_title'>Contact</h2>
-        <h3 style={{fontWeight: 400}} className='contact-title'>Any type of query<br/>and discussion</h3>
-        <ul className='contact-action'>
-          {contact.map((item, index) => (
-            <li className='contact-action_item' key={index}>
-              <Link href={item.target} >{item.label}</Link>
-            </li>
-          ))}
-        </ul>
-        <h3 style={{fontWeight: 900, textTransform: "uppercase"}} className='contact-title'>Let&apos;s Connect</h3>
-        <ul className='contact-connect'>
-          {socialMedia.map((item, index) => (
-            <li className='contact-connect_item' key={index}>
-              <Link href={item.target} >{item.label}</Link>
-            </li>
-          ))}
-        </ul>
+        <h2 style={{transform: `translate(0, calc(-50% - ${posY / 20}px))`}} className='landing-section_title'>Contact</h2>
+        <div style={{transform: `translate(0, ${posY / 30}px)`}}>
+          <h3 style={{fontWeight: 400}} className='contact-title'>Any type of query<br/>and discussion</h3>
+          <ul className='contact-action'>
+            {contact.map((item, index) => (
+              <li className='contact-action_item' key={index}>
+                <Link href={item.target} >{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+          <h3 style={{fontWeight: 900, textTransform: "uppercase"}} className='contact-title'>Let&apos;s Connect</h3>
+          <ul className='contact-connect'>
+            {socialMedia.map((item, index) => (
+              <li className='contact-connect_item' key={index}>
+                <Link href={item.target} >{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </Root>
   )

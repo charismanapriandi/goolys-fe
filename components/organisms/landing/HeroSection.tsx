@@ -1,6 +1,8 @@
 import Container from "@/atoms/Container";
+import usePosition from "hook/usePosition";
+import { useEffect } from "react";
 import styled from "styled-components";
-import { breakpoint } from "styles/breakpoints";
+import { breakpoint, screen } from "styles/breakpoints";
 
 const Root = styled.div(({theme}) => ({
   minHeight: '100vh',
@@ -13,8 +15,7 @@ const Root = styled.div(({theme}) => ({
     color: `${theme.colors.white.opacity[1]}`,
     fontFamily: `${theme.fontFamily.poppins}`,
     position: 'absolute',
-    top: '40%',
-    transform: 'translate(0, -50%)',
+    top: '20%',
     right: 0,
     'span': {
       marginRight: '10px',
@@ -75,7 +76,8 @@ const Root = styled.div(({theme}) => ({
     writingMode: "vertical-lr",
     [`${breakpoint('md')}`]: {
       backgroundSize: 'auto',
-      backgroundPosition: 'top center',
+      backgroundPosition: '100% 0',
+      // backgroundPosition: '40% 10%',
       writingMode: "horizontal-tb",
       top: 'auto',
       left: 'auto',
@@ -87,17 +89,19 @@ const Root = styled.div(({theme}) => ({
 }));
 
 const HeroSection = () => {
+  const posY = usePosition();
+
   return (
     <Root>
       <Container>
-        <p className='hero-content'>
+        <p style={{transform: `translateY(${-posY / 3}px)`}} className='hero-content'>
           <span>Hey There!</span>
           <span>I&apos;m Charisman Afriandi,</span>
           <span>Base In<br/>Yogyakarta.</span>
           <span>I start my career in<br/>web development</span>
           <span>since 2019</span>
         </p>
-        <p className='hero-text_mask'>Goolys.</p>
+        <p style={{transform: `translateY(${posY / 80}px)`}} className='hero-text_mask'>Goolys.</p>
       </Container>
     </Root>
   )

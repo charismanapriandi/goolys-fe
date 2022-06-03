@@ -1,5 +1,6 @@
 import Container from "@/atoms/Container";
 import SkillCard from "@/molecules/SkillCard";
+import usePosition from "hook/usePosition";
 import styled from "styled-components";
 import { breakpoint } from "styles/breakpoints";
 
@@ -69,14 +70,15 @@ const Root = styled.div(({theme}) => ({
 }))
 
 const SkillSection = () => {
+  const posY = usePosition();
   return (
     <Root className="skill_section-root">
       <Container>
-        <div className='landing-section_title'>
+        <div style={{transform: `translate(0, calc(-50% - ${posY / 20}px))`}} className='landing-section_title'>
           <h2>Mastered</h2>
           <p>Skill | Tools | Tekhnologies</p>
         </div>
-        <ul>
+        <ul style={{transform: `translate(0, ${posY / 30}px)`}}>
           <li><SkillCard image='/assets/redux.png' name='redux' /></li>
           <li><SkillCard image='/assets/redux.png' name='redux' /></li>
           <li><SkillCard image='/assets/redux.png' name='redux' /></li>
