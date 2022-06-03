@@ -17,7 +17,6 @@ const Root = styled('nav')<{isActive:boolean}>(({theme, isActive}) => ({
   borderBottom: '1px solid #3D3D3D',
   padding: '20px 0',
   '.menu-root': {
-    cursor: 'pointer',
     transition: 'all .2s ease-in-out',
     transform: isActive ? `translateY(-70px)` : `translateY(0)`,
   },
@@ -123,7 +122,7 @@ const Header = () => {
             color={theme.colors.white.opacity[1]} 
             fontSize={24}
             fontWeight={800}>Goolys.</Typography>
-          <MyIcon.Menu isActive={isActive} onClick={toggleMenu} />
+          <MyIcon.Menu data-cursor="grow" isActive={isActive} onClick={toggleMenu} />
         </Row>
       </Root>
     </>

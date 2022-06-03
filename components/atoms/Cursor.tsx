@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react"
 import styled, { css, keyframes, useTheme } from "styled-components"
 import gsap from 'gsap';
 import { CursorContext } from "context/cursorContext";
+import { isNull } from 'lodash'
 
 const rotateCircle = keyframes({
   'from': {
@@ -15,8 +16,8 @@ const rotateCircle = keyframes({
 const Root = styled('div')<{isClickable: boolean}>(({theme}) => ({
   '.cursor-dot': {
     position: 'fixed',
-    width: '20px',
-    height: '20px',
+    width: '2vw',
+    height: '2vw',
     transform: 'translate(-50%, -50%)',
     borderRadius: '50%',
     backgroundColor: '#fff',
@@ -29,8 +30,8 @@ const Root = styled('div')<{isClickable: boolean}>(({theme}) => ({
   },
   '.cursor-circle_root': {
     position: 'fixed',
-    width: '60px',
-    height: '60px',
+    width: '4vw',
+    height: '4vw',
     transform: 'translate(-50%, -50%)',
     borderRadius: '60px',
     transition: 'top 0.1s, left 0.1s, width .4s ease-in-out, height .4s ease-in-out',
@@ -60,21 +61,21 @@ const Cursor = () => {
   
   const growCursor = () => {
     gsap.to(dotRef.current, {
-      duration: .1,
+      duration: .4,
       ease: "power2",
       css: {
-        width: 30,
-        height: 30
+        width: '3vw',
+        height: '3vw'
       }
     })
   }
   const shrinkCursor = () => {
     gsap.to(dotRef.current, {
-      duration: .1,
+      duration: .4,
       ease: "power2",
       css: {
-        width: 20,
-        height: 20
+        width: '2vw',
+        height: '2vw'
       }
     })
   }
@@ -84,7 +85,7 @@ const Cursor = () => {
       ease: "power2",
       css: {
         transform: 'translate(-50%, -50%) scale(1.5)',
-        opacity: 1
+        opacity: 0
       }
     })
   }
@@ -101,14 +102,14 @@ const Cursor = () => {
   
   const handleMouseMove = (e: MouseEvent) => {
     gsap.to(dotRef.current, {
-      duration: .5,
+      duration: .4,
       css: {
         left: e.clientX,
         top: e.clientY
       }
     });
     gsap.to(circleRef.current, {
-      duration: .6,
+      duration: .5,
       css: {
         left: e.clientX,
         top: e.clientY
@@ -124,17 +125,20 @@ const Cursor = () => {
     // handle pointer shadow
     window.addEventListener('pointerdown', handlePointerDown)
     window.addEventListener('pointerup', handlePointerUp)
+    // handle on hover link
+    const growElements = Array.from(document.querySelectorAll("[data-cursor='grow']"));
+    
+    growElements.map(item => {
+      item.addEventListener('mouseenter', function(){
+        growCursor()
+        hideCircle()
+      })
+      item.addEventListener('mouseleave', function(){
+        shrinkCursor()
+        showCircle()
+      })
+    })
   }, [])
-
-  useEffect(() => {
-    if (cursorCtx.text !== null) {
-      hideCircle()
-      growCursor()
-    } else {
-      showCircle()
-      shrinkCursor()
-    }
-  }, [cursorCtx.text])
 
   return (
     <Root className='cursor-root' isClickable={cursorCtx.text !== null}>
