@@ -9,6 +9,9 @@ declare module 'styled-components' {
       arial: string;
       poppins: string;
     }
+    transition: {
+      easeInOut: (duration: number) => string,
+    }
     colors: {
       black: {
         opacity: {

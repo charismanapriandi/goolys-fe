@@ -1,3 +1,7 @@
 import * as Svg from './svg';
+import Menu from './Menu';
 
-export default Svg;
+export {
+  Svg,
+  Menu,
+};

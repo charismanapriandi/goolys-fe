@@ -54,6 +54,9 @@ const Root = styled.div(({theme}) => ({
         textDecoration: 'none',
         fontFamily: `${theme.fontFamily.arial}`,
         fontSize: '18px',
+        background: `-webkit-linear-gradient(45deg, #09CF94, #00A5D9)`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
         [`${breakpoint('md')}`]: {
           fontSize: '24px',
         },
@@ -76,6 +79,9 @@ const Root = styled.div(({theme}) => ({
         fontFamily: `${theme.fontFamily.arial}`,
         fontSize: '18px',
         textAlign: 'right',
+        background: `-webkit-linear-gradient(45deg, #09CF94, #00A5D9)`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
         [`${breakpoint('md')}`]: {
           fontSize: '24px',
         }
@@ -97,7 +103,7 @@ const ContactSection = () => {
             </li>
           ))}
         </ul>
-        <h3 style={{fontWeight: 900}} className='contact-title'>Let&apos;s Connect</h3>
+        <h3 style={{fontWeight: 900, textTransform: "uppercase"}} className='contact-title'>Let&apos;s Connect</h3>
         <ul className='contact-connect'>
           {socialMedia.map((item, index) => (
             <li className='contact-connect_item' key={index}>

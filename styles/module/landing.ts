@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { breakpoint } from "styles/breakpoints";
 
 const LandingStyle = styled('div')(({theme}) => ({
+  maxWidth: '100vw',
+  overflowX: 'hidden',
+  cursor: 'none !important',
   '.global-container': {
     position: 'relative',
   },

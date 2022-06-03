@@ -6,6 +6,9 @@ const theme: DefaultTheme = {
     arial: 'Arial',
     poppins: "'Poppins', sans-serif",
   },
+  transition: {
+    easeInOut: (duration: number) => `all ${duration}s ease-in-out`,
+  }, 
   colors: {
     black: {
       opacity: {
