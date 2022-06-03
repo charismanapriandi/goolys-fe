@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import styled, { css, keyframes, useTheme } from "styled-components"
 import gsap from 'gsap';
-import { CursorContext } from "context/cursorContext";
 import { isNull } from 'lodash'
 
 const rotateCircle = keyframes({
@@ -13,7 +12,7 @@ const rotateCircle = keyframes({
   }
 })
 
-const Root = styled('div')<{isClickable: boolean}>(({theme}) => ({
+const Root = styled('div')(({theme}) => ({
   '.cursor-dot': {
     position: 'fixed',
     width: '2vw',
@@ -55,7 +54,6 @@ const Root = styled('div')<{isClickable: boolean}>(({theme}) => ({
 `)
 
 const Cursor = () => {
-  const cursorCtx = useContext(CursorContext);
   const dotRef = useRef(null)
   const circleRef = useRef(null)
   
@@ -141,7 +139,7 @@ const Cursor = () => {
   }, [])
 
   return (
-    <Root className='cursor-root' isClickable={cursorCtx.text !== null}>
+    <Root className='cursor-root'>
       <div ref={dotRef} className="cursor-dot" />
       <svg viewBox="0 0 60 60" ref={circleRef} className="cursor-circle_root">
         <circle id="cursor_circle" className="cursor-circle" r='30px' cx='50%' cy="50%" />

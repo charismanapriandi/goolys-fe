@@ -53,6 +53,7 @@ const Root = styled.div(({theme}) => ({
       },
       'a': {
         textDecoration: 'none',
+        cursor: 'none',
         fontFamily: `${theme.fontFamily.arial}`,
         fontSize: '18px',
         background: `-webkit-linear-gradient(45deg, #09CF94, #00A5D9)`,
@@ -79,6 +80,7 @@ const Root = styled.div(({theme}) => ({
         textDecoration: 'none',
         fontFamily: `${theme.fontFamily.arial}`,
         fontSize: '18px',
+        cursor: 'none',
         textAlign: 'right',
         background: `-webkit-linear-gradient(45deg, #09CF94, #00A5D9)`,
         WebkitBackgroundClip: 'text',
@@ -102,7 +104,9 @@ const ContactSection = () => {
           <ul className='contact-action'>
             {contact.map((item, index) => (
               <li className='contact-action_item' key={index}>
-                <Link href={item.target} >{item.label}</Link>
+                <Link href={item.target} >
+                  <a data-cursor={'grow'}>{item.label}</a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -110,7 +114,9 @@ const ContactSection = () => {
           <ul className='contact-connect'>
             {socialMedia.map((item, index) => (
               <li className='contact-connect_item' key={index}>
-                <Link href={item.target} >{item.label}</Link>
+                <Link href={item.target} >
+                  <a data-cursor={'grow'}>{item.label}</a>
+                </Link>
               </li>
             ))}
           </ul>
