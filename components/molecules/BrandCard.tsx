@@ -1,7 +1,8 @@
+import useScreenSize from "hook/useScreenSize";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styled from "styled-components";
-import { breakpoint } from "styles/breakpoints";
+import { breakpoint, screen } from "styles/breakpoints";
 
 const Root = styled.a<{accent: string}>(({theme, accent}) => ({
   backgroundColor: theme.colors.dark.background[2],
@@ -21,6 +22,9 @@ const Root = styled.a<{accent: string}>(({theme, accent}) => ({
     position: 'relative',
     borderRadius: '8px',
     overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: accent,
     [`${breakpoint('md')}`]: {
       width: '44px',
@@ -41,17 +45,20 @@ interface Props {
   accent: string;
   brand: string;
   image: string;
+  href: string;
 }
 
-const BrandCard: FC<Props>= ({accent, brand, image}) => {
+const BrandCard: FC<Props>= ({accent, brand, image, href}) => {
+  const {width:sw} = useScreenSize()
+  
   return (
-    <Root href="#" target={'_blank'} accent={accent}>
+    <Root href={href} target={'_blank'} accent={accent}>
       <div className="brand_card-brand_logo">
         <Image
           src={image}
-          layout='fill'
-          objectFit="contain"
-          alt="brand"
+          width={sw > screen.md ? 24 : 16}
+          height={sw > screen.md ? 24 : 16}
+          alt={brand}
         />
       </div>
       <h4 className="brand_card-title">{brand}</h4>

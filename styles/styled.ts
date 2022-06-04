@@ -10,6 +10,9 @@ const theme: DefaultTheme = {
   }, 
   colors: {
     dark: {
+      alert: {
+        error: '#EA4300',
+      },
       background: {
         1: '#1C1A18',
         2: '#282524',

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { breakpoint } from "styles/breakpoints";
 
 const Root = styled.div(({theme}) => ({
   marginTop: '144px',
@@ -7,16 +8,22 @@ const Root = styled.div(({theme}) => ({
     marginBottom: '28px',
   },
   '.landing_section-title': {
-    fontSize: '36px',
+    fontSize: '30px',
     fontWeight: 700,
     color: theme.colors.dark.font[2],
     textTransform: "capitalize",
+    [`${breakpoint('md')}`]: {
+      fontSize: '36px',
+    }
   },
   '.landing_section-subtitle': {
-    fontSize: '18px',
+    fontSize: '16px',
     color: theme.colors.dark.font[4],
     fontWeight: 700,
     marginTop: '8px',
+    [`${breakpoint('md')}`]: {
+      fontSize: '18px',
+    }
   }
 }))
 

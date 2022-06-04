@@ -13,6 +13,9 @@ declare module 'styled-components' {
     }
     colors: {
       dark: {
+        alert: {
+          error: string,
+        }
         background: {
           1: string;
           2: string;

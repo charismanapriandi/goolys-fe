@@ -17,6 +17,7 @@ const useScreenSize = () => {
     function updateSize(){
       setScreenSize({width: screen.width, height: screen.height})
     }
+    updateSize()
     window.addEventListener('resize', updateSize)
     return () => window.removeEventListener('resize', updateSize);
   }, [])
