@@ -11,8 +11,9 @@ const Button = styled('button')(({theme}) => ({
   width: '400px',
   cursor: 'pointer',
   transition: theme.transition.easeInOut(.3),
-  ':hover': {
+  ':hover, :focus': {
     backgroundColor: 'transparent',
+    outline: 'none',
     color: theme.colors.dark.font[1],
     boxShadow: `0 0 0 1px ${theme.colors.dark.font[1]}`
   }

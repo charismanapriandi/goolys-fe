@@ -1,4 +1,5 @@
 import Brand from "@/atoms/Brand"
+import Link from "next/link"
 import styled from "styled-components"
 
 const Root = styled.nav(({theme}) => ({

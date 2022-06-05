@@ -17,7 +17,7 @@ const Root = styled.div(({theme}) => ({
 const Brand = () => {
   return (
     <Root>
-      <Link href="/">Goolys.</Link>
+      <Link href="/dashboard">Goolys.</Link>
     </Root>
   )
 }

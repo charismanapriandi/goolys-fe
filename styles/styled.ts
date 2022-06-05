@@ -11,7 +11,10 @@ const theme: DefaultTheme = {
   colors: {
     dark: {
       alert: {
-        error: '#EA4300',
+        error: {
+          text: '#EA4300',
+          background: '#EA43001A'
+        },
       },
       background: {
         1: '#1C1A18',

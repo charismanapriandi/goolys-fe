@@ -7,8 +7,11 @@ import Button from "@/atoms/Button";
 import Input from '@/molecules/field/Input';
 import Form from '@/atoms/Form';
 import FormError from '@/atoms/FormError';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SubmitForm from '@/molecules/field/SubmitForm';
+import { API_ROUTES, instance } from 'config/axios';
+import Alert from '@/atoms/Alert';
+import { useRouter } from 'next/router';
 
 interface FormValues {
   email: string;
@@ -20,23 +23,36 @@ const initialValue: FormValues = {
   password: '',
 }
 
+
 const Login = () => {
+  const [invalidMessage, setInvalidMessage] = useState<string>()
+  const router = useRouter();
   const formik = useFormik<FormValues>({
     initialValues: initialValue,
     validationSchema: LoginSchema,
-    onSubmit: values => console.log(values)
+    onSubmit: values => onSubmit(values),
   })
+  const {isSubmitting} = formik;
 
-  useEffect(() => {
-    console.log(formik.errors)
-  }, [formik.errors])
-  
+  const onSubmit = async (values: FormValues) => {
+    instance({
+      method: 'POST',
+      url: API_ROUTES.AUTH.LOGIN,
+      data: values,
+    }).then((res) => {
+      router.push('/dashboard');
+    }).catch((err) => {
+      setInvalidMessage(err.response.data.message)
+    })
+  }
+
   return (
     <FormikProvider value={formik}>
+      {invalidMessage && <Alert style={{marginBottom: '20px'}} type='error'>{invalidMessage}</Alert>}
       <Form noValidate onReset={formik.handleReset} onSubmit={formik.handleSubmit}>
         <Input type='email' label='email' name='email' />
         <Input type='password' label='password' name='password' />
-        <SubmitForm isSubmitting={formik.isSubmitting} />
+        <SubmitForm isSubmitting={isSubmitting} />
       </Form>
     </FormikProvider>
   )
